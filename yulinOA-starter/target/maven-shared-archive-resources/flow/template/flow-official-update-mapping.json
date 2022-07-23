@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_OFFICIAL_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【公文管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.OfficialUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.OfficialUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_OFFICIAL_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_OFFICIAL_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.OfficialUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.OfficialUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_OFFICIAL_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_OFFICIAL_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

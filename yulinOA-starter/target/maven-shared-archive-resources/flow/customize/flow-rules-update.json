@@ -1,0 +1,24 @@
+{
+  "id":"FLOW_RULES_UPDATE",
+  "type":"flow",
+  "title":"编辑制度流程",
+  "nodes":[
+    {
+      "id":"FLOW_NODE_UPDATE_RULES",
+      "type":"event",
+      "title":"编辑制度实体",
+      "reference":"FLOW_CODE_UPDATE_RULES"
+    },
+    {
+      "id":"FLOW_NODE_UPDATE_RULES_EXECUTE",
+      "type":"event",
+      "title":"编辑制度部门",
+      "reference":"FLOW_CODE_UPDATE_RULES_EXECUTE"
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_UPDATE_RULES", "condition":"true" },
+    { "source":"FLOW_NODE_UPDATE_RULES", "target":"FLOW_NODE_UPDATE_RULES_EXECUTE", "condition":"true" },
+    { "source":"FLOW_NODE_UPDATE_RULES_EXECUTE", "target":"end", "condition":"true" }
+  ]
+}

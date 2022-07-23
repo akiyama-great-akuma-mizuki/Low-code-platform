@@ -1,0 +1,48 @@
+{
+  "id":"FLOW_MEETING_SCHEDULE_POST",
+  "type":"flow",
+  "title":"会议新建日程流程",
+  "params":[
+    { "name":"name", "type":"String" },
+    { "name":"meetingPeopleList", "type":"String" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_MEETING_POST",
+      "type":"event",
+      "title":"新建会议",
+      "reference":"FLOW_CODE_MEETING_POST",
+      "params":[
+        { "name":"name", "type":"String" }
+      ],
+      "results":[
+        { "name":"meetingId", "type":"String" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_MEETING_USER_POST",
+      "type":"event",
+      "title":"新建会议参与人员",
+      "reference":"FLOW_CODE_MEETING_USER_POST",
+      "params":[
+        { "name":"meetingId", "type":"String" },
+        { "name":"meetingPeopleList", "type":"String" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_SCHEDULE_POST",
+      "type":"event",
+      "title":"新建会议日程",
+      "reference":"FLOW_CODE_SCHEDULE_POST",
+      "params":[
+        { "name":"meetingId", "type":"String" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_MEETING_POST", "condition":"true" },
+    { "source":"FLOW_NODE_MEETING_POST", "target":"FLOW_NODE_MEETING_USER_POST", "condition":"true" },
+    { "source":"FLOW_NODE_MEETING_USER_POST", "target":"FLOW_NODE_SCHEDULE_POST", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_POST", "target":"end", "condition":"true" }
+  ]
+}

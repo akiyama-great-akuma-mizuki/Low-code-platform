@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CAR_PARK_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【车辆停车管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.CarParkUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.CarParkUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CAR_PARK_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_CAR_PARK_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.CarParkUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.CarParkUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CAR_PARK_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_CAR_PARK_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

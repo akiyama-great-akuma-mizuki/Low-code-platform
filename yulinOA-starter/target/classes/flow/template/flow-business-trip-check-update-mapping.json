@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_CHECK_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【出差审批管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheckUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheckUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_CHECK_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_CHECK_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheckUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheckUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_CHECK_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_CHECK_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

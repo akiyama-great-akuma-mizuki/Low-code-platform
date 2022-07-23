@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_RULES_EXECUTE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【制度执行管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_RULES_EXECUTE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_RULES_EXECUTE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_RULES_EXECUTE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_RULES_EXECUTE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

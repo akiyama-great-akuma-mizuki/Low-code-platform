@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ENTRANCE_HISTORY_UPDATE",
+  "type":"flow",
+  "title":"更新实体【门禁历史记录】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistory" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistory" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ENTRANCE_HISTORY_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_ENTRANCE_HISTORY_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistory" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistory" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ENTRANCE_HISTORY_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_ENTRANCE_HISTORY_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

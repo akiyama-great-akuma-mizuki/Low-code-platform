@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ORGANIZE_ARCHIVE_CREATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【组织查阅档案管理】",
+  "params":[
+    { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchivePostMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchivePostMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ORGANIZE_ARCHIVE_CREATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_ORGANIZE_ARCHIVE_CREATE_MAPPING",
+      "params":[
+        { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchivePostMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchivePostMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ORGANIZE_ARCHIVE_CREATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_ORGANIZE_ARCHIVE_CREATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

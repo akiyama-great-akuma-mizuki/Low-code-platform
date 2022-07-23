@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_DIY_FLOW_TEXT_UPDATE",
+  "type":"flow",
+  "title":"更新实体【自定义流程字段管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowText" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowText" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DIY_FLOW_TEXT_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_DIY_FLOW_TEXT_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowText" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowText" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DIY_FLOW_TEXT_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_DIY_FLOW_TEXT_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

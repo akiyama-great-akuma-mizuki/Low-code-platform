@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_MEETING_CREATE",
+  "type":"flow",
+  "title":"创建实体【会议管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_MEETING_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_MEETING_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_MEETING_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_MEETING_CREATE", "target":"end", "condition":"true" }
+  ]
+}

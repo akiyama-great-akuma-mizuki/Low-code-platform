@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CAR_CREATE",
+  "type":"flow",
+  "title":"创建实体【车辆管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Car" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Car" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CAR_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_CAR_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Car" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Car" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CAR_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_CAR_CREATE", "target":"end", "condition":"true" }
+  ]
+}

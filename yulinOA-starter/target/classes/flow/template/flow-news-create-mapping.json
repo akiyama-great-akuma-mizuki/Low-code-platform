@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NEWS_CREATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【新闻管理】",
+  "params":[
+    { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.NewsPostMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.NewsPostMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NEWS_CREATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_NEWS_CREATE_MAPPING",
+      "params":[
+        { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.NewsPostMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.NewsPostMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NEWS_CREATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_NEWS_CREATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

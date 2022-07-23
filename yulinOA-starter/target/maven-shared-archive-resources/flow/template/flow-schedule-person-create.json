@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SCHEDULE_PERSON_CREATE",
+  "type":"flow",
+  "title":"创建实体【日程参与人员管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.SchedulePerson" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.SchedulePerson" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SCHEDULE_PERSON_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_SCHEDULE_PERSON_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.SchedulePerson" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.SchedulePerson" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SCHEDULE_PERSON_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_PERSON_CREATE", "target":"end", "condition":"true" }
+  ]
+}

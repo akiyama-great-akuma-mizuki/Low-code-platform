@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_PEOPLE_CREATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【出差同行人管理】",
+  "params":[
+    { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeoplePostMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeoplePostMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_CREATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_PEOPLE_CREATE_MAPPING",
+      "params":[
+        { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeoplePostMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeoplePostMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_CREATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_CREATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

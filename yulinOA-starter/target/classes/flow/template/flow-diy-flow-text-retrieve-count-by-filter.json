@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_DIY_FLOW_TEXT_RETRIEVE_COUNT_BY_FILTER",
+  "type":"flow",
+  "title":"通过过滤器获取【自定义流程字段管理】数量",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowTextFilterMapper" }
+  ],
+  "results":[
+    { "name":"diyFlowTextCount", "type":"Long" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DIY_FLOW_TEXT_RETRIEVE_COUNT_BY_FILTER",
+      "type":"event",
+      "reference":"FLOW_CODE_DIY_FLOW_TEXT_RETRIEVE_COUNT_BY_FILTER",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowTextFilterMapper" }
+      ],
+      "results":[
+        { "name":"diyFlowTextCount", "type":"Long" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DIY_FLOW_TEXT_RETRIEVE_COUNT_BY_FILTER", "condition":"true" },
+    { "source":"FLOW_NODE_DIY_FLOW_TEXT_RETRIEVE_COUNT_BY_FILTER", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id":"FLOW_CHECK_BUSINESS_TRIP_REFRESH_STATUS",
+  "type":"flow",
+  "title":"出差审批&刷新出差状态",
+  "params":[
+    { "name":"businessTripId", "type":"String" },
+    { "name":"checkPersonId", "type":"String" },
+    { "name":"status", "type":"Integer" }
+  ],
+  "results":[
+    { "name":"totalStatus", "type":"Integer" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_UPDATE_CHECK_STATUS",
+      "type":"event",
+      "title":"修改审批状态",
+      "reference":"FLOW_CODE_UPDATE_CHECK_STATUS",
+      "params":[
+        { "name":"checkPersonId", "type":"String" },
+        { "name":"status", "type":"Integer" }
+      ],
+      "results":[
+        { "name":"totalStatus", "type":"Integer" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_REFRESH_STATUS",
+      "type":"event",
+      "title":"刷新出差状态",
+      "reference":"FLOW_CODE_REFRESH_STATUS",
+      "params":[
+        { "name":"businessTripId", "type":"String" },
+        { "name":"totalStatus", "type":"Integer" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_UPDATE_CHECK_STATUS", "condition":"true" },
+    { "source":"FLOW_NODE_UPDATE_CHECK_STATUS", "target":"FLOW_NODE_REFRESH_STATUS", "condition":"true" },
+    { "source":"FLOW_NODE_REFRESH_STATUS", "target":"end", "condition":"true" }
+  ]
+}

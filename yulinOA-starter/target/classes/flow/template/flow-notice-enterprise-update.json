@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NOTICE_ENTERPRISE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【公告查阅企业管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NOTICE_ENTERPRISE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_NOTICE_ENTERPRISE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NOTICE_ENTERPRISE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_NOTICE_ENTERPRISE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

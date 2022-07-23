@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_DIY_FLOW_FINISH_RETRIEVE_FILTER_MAP_LIST",
+  "type":"flow",
+  "title":"通过过滤器获取【自定义流程完成管理】简要列表",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowFinishFilterMapper" }
+  ],
+  "results":[
+    { "name":"diyFlowFinishDetailMapList", "type":"List" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DIY_FLOW_FINISH_RETRIEVE_FILTER_MAP_LIST",
+      "type":"event",
+      "reference":"FLOW_CODE_DIY_FLOW_FINISH_RETRIEVE_FILTER_MAP_LIST",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowFinishFilterMapper" }
+      ],
+      "results":[
+        { "name":"diyFlowFinishDetailMapList", "type":"List" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DIY_FLOW_FINISH_RETRIEVE_FILTER_MAP_LIST", "condition":"true" },
+    { "source":"FLOW_NODE_DIY_FLOW_FINISH_RETRIEVE_FILTER_MAP_LIST", "target":"end", "condition":"true" }
+  ]
+}

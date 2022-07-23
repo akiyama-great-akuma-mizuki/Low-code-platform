@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PROPERTY_RECORD_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【物业缴费记录】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecordUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecordUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PROPERTY_RECORD_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_PROPERTY_RECORD_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecordUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecordUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PROPERTY_RECORD_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_PROPERTY_RECORD_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

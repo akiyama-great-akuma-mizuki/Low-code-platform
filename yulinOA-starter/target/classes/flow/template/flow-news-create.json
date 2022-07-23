@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NEWS_CREATE",
+  "type":"flow",
+  "title":"创建实体【新闻管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NEWS_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_NEWS_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NEWS_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_NEWS_CREATE", "target":"end", "condition":"true" }
+  ]
+}

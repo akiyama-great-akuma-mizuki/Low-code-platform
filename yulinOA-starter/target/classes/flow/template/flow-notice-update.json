@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NOTICE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【公告管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Notice" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Notice" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NOTICE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_NOTICE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Notice" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Notice" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NOTICE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_NOTICE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

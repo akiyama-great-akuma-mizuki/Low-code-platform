@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PARK_PLACE_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【停车位管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkPlaceUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkPlaceUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PARK_PLACE_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_PARK_PLACE_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkPlaceUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkPlaceUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PARK_PLACE_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_PARK_PLACE_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

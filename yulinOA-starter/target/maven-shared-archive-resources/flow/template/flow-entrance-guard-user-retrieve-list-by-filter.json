@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ENTRANCE_GUARD_USER_RETRIEVE_LIST_BY_FILTER",
+  "type":"flow",
+  "title":"通过过滤器获取【用户门禁管理】实体列表",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUserFilterMapper" }
+  ],
+  "results":[
+    { "name":"entranceGuardUserList", "type":"List" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ENTRANCE_GUARD_USER_RETRIEVE_LIST_BY_FILTER",
+      "type":"event",
+      "reference":"FLOW_CODE_ENTRANCE_GUARD_USER_RETRIEVE_LIST_BY_FILTER",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUserFilterMapper" }
+      ],
+      "results":[
+        { "name":"entranceGuardUserList", "type":"List" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ENTRANCE_GUARD_USER_RETRIEVE_LIST_BY_FILTER", "condition":"true" },
+    { "source":"FLOW_NODE_ENTRANCE_GUARD_USER_RETRIEVE_LIST_BY_FILTER", "target":"end", "condition":"true" }
+  ]
+}

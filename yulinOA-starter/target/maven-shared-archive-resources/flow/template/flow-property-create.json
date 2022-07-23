@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PROPERTY_CREATE",
+  "type":"flow",
+  "title":"创建实体【物业服务】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PROPERTY_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PROPERTY_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PROPERTY_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_PROPERTY_CREATE", "target":"end", "condition":"true" }
+  ]
+}

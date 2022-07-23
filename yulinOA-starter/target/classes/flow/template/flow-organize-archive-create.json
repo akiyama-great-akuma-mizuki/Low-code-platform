@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ORGANIZE_ARCHIVE_CREATE",
+  "type":"flow",
+  "title":"创建实体【组织查阅档案管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchive" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchive" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ORGANIZE_ARCHIVE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_ORGANIZE_ARCHIVE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchive" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.OrganizeArchive" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ORGANIZE_ARCHIVE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_ORGANIZE_ARCHIVE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

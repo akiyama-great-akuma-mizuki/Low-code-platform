@@ -1,0 +1,115 @@
+package com.code.testCore.model;
+
+import com.alibaba.fastjson.JSONObject;
+import java.lang.Long;
+import java.lang.Object;
+import java.lang.String;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class NoticePostMapper {
+  public String noticeTitle;
+
+  public String issuer;
+
+  public Long issueTime;
+
+  public String accessory;
+
+  public String detail;
+
+  public String noticeImg;
+
+  public NoticePostMapper() {
+  }
+
+  public NoticePostMapper(String noticeTitle, String issuer, Long issueTime, String accessory,
+      String detail, String noticeImg) {
+    this.noticeTitle=noticeTitle;
+    this.issuer=issuer;
+    this.issueTime=issueTime;
+    this.accessory=accessory;
+    this.detail=detail;
+    this.noticeImg=noticeImg;
+  }
+
+  public static NoticePostMapper buildMapper(Notice obj) {
+    NoticePostMapper mapper = new NoticePostMapper();
+    mapper.noticeTitle=obj.getNoticeTitle();
+    mapper.issuer=obj.getIssuer();
+    mapper.issueTime=obj.modifyTime(obj.getIssueTime());
+    mapper.accessory=obj.getAccessory();
+    mapper.detail=obj.getDetail();
+    mapper.noticeImg=obj.getNoticeImg();
+    return mapper;
+  }
+
+  public Map<String, Object> buildMap() {
+    Map<String, Object> map = new LinkedHashMap<>();
+    map.put("noticeTitle",this.noticeTitle);
+    map.put("issuer",this.issuer);
+    map.put("issueTime",this.issueTime);
+    map.put("accessory",this.accessory);
+    map.put("detail",this.detail);
+    map.put("noticeImg",this.noticeImg);
+    return map;
+  }
+
+  public static Map<String, Object> buildMap(Notice obj) {
+    Map<String, Object> map = new LinkedHashMap<>();
+    if (obj == null) return map;
+    map.put("noticeTitle", obj.getNoticeTitle());
+    map.put("issuer", obj.getIssuer());
+    map.put("issueTime", obj.modifyTime(obj.getIssueTime()));
+    map.put("accessory", obj.getAccessory());
+    map.put("detail", obj.getDetail());
+    map.put("noticeImg", obj.getNoticeImg());
+    return map;
+  }
+
+  public static Map<String, String> buildSerialMap(Notice obj) {
+    Map<String, String> map = new LinkedHashMap<>();
+    map.put("noticeTitle", JSONObject.toJSONString(obj.getNoticeTitle()));
+    map.put("issuer", JSONObject.toJSONString(obj.getIssuer()));
+    map.put("issueTime", JSONObject.toJSONString(obj.modifyTime(obj.getIssueTime())));
+    map.put("accessory", JSONObject.toJSONString(obj.getAccessory()));
+    map.put("detail", JSONObject.toJSONString(obj.getDetail()));
+    map.put("noticeImg", JSONObject.toJSONString(obj.getNoticeImg()));
+    return map;
+  }
+
+  public Notice buildEntity() {
+    Notice obj = new Notice();
+    obj.setNoticeTitle(this.noticeTitle);
+    obj.setIssuer(this.issuer);
+    obj.setIssueTime(obj.recoverTime(this.issueTime));
+    obj.setAccessory(this.accessory);
+    obj.setDetail(this.detail);
+    obj.setNoticeImg(this.noticeImg);
+    return obj;
+  }
+
+  public static Notice parseEntity(Map<String, Object> map) {
+    Notice obj = new Notice();
+    if (map == null) return obj;
+    obj.setNoticeTitle((String) map.get("noticeTitle"));
+    obj.setIssuer((String) map.get("issuer"));
+    obj.setIssueTime(obj.recoverTime((Long) map.get("issueTime")));
+    obj.setAccessory((String) map.get("accessory"));
+    obj.setDetail((String) map.get("detail"));
+    obj.setNoticeImg((String) map.get("noticeImg"));
+    return obj;
+  }
+
+  public static Notice parseSerialEntity(Map<String, String> map) {
+    Notice obj = new Notice();
+    if (map == null) return obj;
+    obj.setNoticeTitle(JSONObject.parseObject(map.get("noticeTitle"), String.class));
+    obj.setIssuer(JSONObject.parseObject(map.get("issuer"), String.class));
+    obj.setIssueTime(obj.recoverTime(JSONObject.parseObject(map.get("issueTime"), Long.class)));
+    obj.setAccessory(JSONObject.parseObject(map.get("accessory"), String.class));
+    obj.setDetail(JSONObject.parseObject(map.get("detail"), String.class));
+    obj.setNoticeImg(JSONObject.parseObject(map.get("noticeImg"), String.class));
+    return obj;
+  }
+}

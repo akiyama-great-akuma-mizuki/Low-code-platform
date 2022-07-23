@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_DIY_FLOW_NODE_CREATE",
+  "type":"flow",
+  "title":"创建实体【自定义流程节点管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNode" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNode" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DIY_FLOW_NODE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_DIY_FLOW_NODE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNode" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNode" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DIY_FLOW_NODE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_DIY_FLOW_NODE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

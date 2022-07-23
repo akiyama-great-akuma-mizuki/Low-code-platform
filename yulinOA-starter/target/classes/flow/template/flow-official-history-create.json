@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_OFFICIAL_HISTORY_CREATE",
+  "type":"flow",
+  "title":"创建实体【公文历史记录】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.OfficialHistory" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.OfficialHistory" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_OFFICIAL_HISTORY_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_OFFICIAL_HISTORY_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.OfficialHistory" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.OfficialHistory" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_OFFICIAL_HISTORY_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_OFFICIAL_HISTORY_CREATE", "target":"end", "condition":"true" }
+  ]
+}

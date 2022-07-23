@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PARK_PLACE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【停车位管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PARK_PLACE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PARK_PLACE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PARK_PLACE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_PARK_PLACE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

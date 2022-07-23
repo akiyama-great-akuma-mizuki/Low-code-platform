@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PARK_PLACE_CREATE",
+  "type":"flow",
+  "title":"创建实体【停车位管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PARK_PLACE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PARK_PLACE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPlace" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PARK_PLACE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_PARK_PLACE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_KNOWLEDGE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【知识管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Knowledge" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Knowledge" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_KNOWLEDGE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_KNOWLEDGE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Knowledge" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Knowledge" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_KNOWLEDGE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_KNOWLEDGE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

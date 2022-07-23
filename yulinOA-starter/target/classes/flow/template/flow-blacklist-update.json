@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BLACKLIST_UPDATE",
+  "type":"flow",
+  "title":"更新实体【黑名单管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BLACKLIST_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BLACKLIST_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BLACKLIST_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_BLACKLIST_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ARCHIVE_MANAGE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【档案管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ARCHIVE_MANAGE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_ARCHIVE_MANAGE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ARCHIVE_MANAGE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_ARCHIVE_MANAGE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

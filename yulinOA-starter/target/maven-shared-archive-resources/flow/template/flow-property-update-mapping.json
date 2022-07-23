@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PROPERTY_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【物业服务】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PROPERTY_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_PROPERTY_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.PropertyUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PROPERTY_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_PROPERTY_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

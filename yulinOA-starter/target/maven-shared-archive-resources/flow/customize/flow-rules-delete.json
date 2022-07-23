@@ -1,0 +1,17 @@
+{
+  "id":"FLOW_RULES_DELETE",
+  "type":"flow",
+  "title":"删除制度流程",
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DEFAULT",
+      "type":"event",
+      "title":"删除制度本身",
+      "reference":"FLOW_CODE_DEFAULT"
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DEFAULT", "condition":"true" },
+    { "source":"FLOW_NODE_DEFAULT", "target":"end", "condition":"true" }
+  ]
+}

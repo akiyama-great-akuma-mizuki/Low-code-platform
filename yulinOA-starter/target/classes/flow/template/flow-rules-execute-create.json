@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_RULES_EXECUTE_CREATE",
+  "type":"flow",
+  "title":"创建实体【制度执行管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_RULES_EXECUTE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_RULES_EXECUTE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesExecute" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_RULES_EXECUTE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_RULES_EXECUTE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

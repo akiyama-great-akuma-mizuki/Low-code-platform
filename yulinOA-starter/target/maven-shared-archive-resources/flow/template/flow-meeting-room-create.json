@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_MEETING_ROOM_CREATE",
+  "type":"flow",
+  "title":"创建实体【会议室管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.MeetingRoom" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.MeetingRoom" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_MEETING_ROOM_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_MEETING_ROOM_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.MeetingRoom" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.MeetingRoom" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_MEETING_ROOM_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_MEETING_ROOM_CREATE", "target":"end", "condition":"true" }
+  ]
+}

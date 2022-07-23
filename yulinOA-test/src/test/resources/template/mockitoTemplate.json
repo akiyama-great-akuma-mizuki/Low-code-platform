@@ -1,0 +1,152 @@
+{
+  "classname": "testClass",
+  "subproject": "yulinOA-starter",
+  "access qualifier": "public",
+  "package": "com.code.testCore.test",
+  "dependencies": [
+    "import com.fasterxml.jackson.core.JsonProcessingException",
+    "import com.fasterxml.jackson.databind.ObjectMapper",
+    "import com.horsecoder.common.status.StatusException",
+    "import com.AppStarter",
+    "import com.horsecoder.yulinOA.sys.datafilter.*",
+    "import com.horsecoder.yulinOA.sys.datainterface.*",
+    "import com.horsecoder.yulinOA.sys.dataobject.*",
+    "import com.horsecoder.yulinOA.sys.model.*",
+    "import com.horsecoder.yulinOA.sys.service.*",
+    "import org.mockito.InjectMocks",
+    "import org.mockito.Mock",
+    "import org.mockito.Mockito",
+    "import org.mockito.MockitoAnnotations",
+    "import org.mockito.invocation.InvocationOnMock",
+    "import org.mockito.stubbing.Answer",
+    "import org.springframework.boot.test.context.SpringBootTest",
+    "import org.testng.Assert",
+    "import org.testng.annotations.BeforeTest",
+    "import org.testng.annotations.Test",
+    "import redis.clients.jedis.Jedis",
+    "import java.util.*",
+    "import java.util.concurrent.atomic.AtomicInteger"
+  ],
+  "annotations": [
+    "@SpringBootTest(classes = AppStarter.class)"
+  ],
+  "mocks": [
+
+    {
+      "access qualifier": "public",
+      "class": "DAO",
+      "name": "dao"
+    },
+    {
+      "access qualifier": "public",
+      "class": "SimpleMapper",
+      "name": "SimpleMapper"
+    },
+    {
+      "access qualifier": "public",
+      "class": "",
+      "name": ""
+    },
+    {
+      "access qualifier": "public",
+      "class": "FilterMapper",
+      "name": "filterMapper"
+    }
+  ],
+  "injectmocks": [
+    {
+      "access qualifier": "public",
+      "class": "Service",
+      "name": "Service"
+    }
+  ],
+  "attributes": [
+    {
+      "access qualifier": "public",
+      "class": "List<Map<String, Object>>",
+      "name": "carList"
+    },
+    {
+      "access qualifier": "public",
+      "class": "Map<String, Object>",
+      "name": "mockParams"
+    }
+  ],
+  "methods": [
+    {
+      "annotations": "@BeforeTest(alwaysRun = true)",
+      "name": "public void beforeTest()",
+      "function": "MockitoAnnotations.initMocks(this);\n        String test =this.getClass().getName();\n        String id=prepareData(test);"
+    },
+    {
+      "annotations": "",
+      "name": "public String prepareData(String key)",
+      "function": "System.out.println(key);\n        return key;"
+    },
+    {
+      "annotations": "",
+      "name": "public static List<Map<String, Object>> loadData(String key)",
+      "function": "        Jedis jedis = new Jedis(\"127.0.0.1\", 6379);\n        ObjectMapper objectMapper = new ObjectMapper();\n        long len = jedis.llen(key);\n        List<Map<String, Object>> Objs = new ArrayList<>();\n        try {\n            while (len-- > 0) {\n                Map map = objectMapper.readValue(jedis.lpop(key), Map.class);\n                Objs.add(map);\n            }\n        } catch (JsonProcessingException e) {\n            e.printStackTrace();\n        } finally {\n            jedis.close();\n            return Objs;\n        }"
+    },
+    {
+      "annotations": "@Test(groups = \"groupGet\")",
+      "name": "public void getByPKTest()",
+      "function": "String testid = \"1\";\n        #Object#DO #object#do = new #Object#DO();\n        #object#do.setId(testid);\n        Mockito.when(#object#dao.selectByPrimaryKey(testid)).thenReturn(#object#do);\n        Assert.assertEquals(#object#Service.getByPK(testid).getId(), testid, \"不相等\");"
+    },
+    {
+      "annotations": "@Test(groups = \"getGet\", dependsOnMethods = \"getByPKTest\")",
+      "name": "public void getSimpleMapByPKTest()",
+      "function": "String testid = mockParams.get(\"id\").toString();\n        Map<String, Object> res = #object#SimpleMapper.buildMap(#object#Service.getByPK(testid));\n       Assert.assertEquals(#object#Service.getSimpleMapByPK(testid), res, \"getSimpleMapByPK不相等\");"
+    },
+    {
+      "annotations": "@Test(groups = \"groupGet\", dependsOnMethods = \"getByPKTest\")",
+      "name": "public void getDetailMapByPKTestIsNull()",
+      "function": "String testid = \"1\";\n        Mockito.when(#object#Service.getByPK(testid)).thenReturn(null);\n        Assert.assertEquals(null, #object#Service.getDetailMapByPK(testid), \"异常\");"
+    },
+    {
+      "annotations": "@Test(groups = \"groupGet\")",
+      "name": "public void getCountByFilterTest()",
+      "function": "        Long count = 0L;\n        Mockito.doReturn(mockParams).when(#object#filterMapper).buildMap();\n        #Object#DOExample example = #Object#Filter.initDOQueryFilter(mockParams);\n        Mockito.doReturn(count).when(#object#dao).countByExample(example);\n        Assert.assertEquals(count, #object#Service.getCountByFilter(#object#filterMapper), \"异常\");\n"
+    },
+    {
+      "annotations": "@Test(groups = \"groupGet\")",
+      "name": "public void getListByFilterTest()",
+      "function": "List<#Object#> entityList = new ArrayList<>();\n        Mockito.doReturn(mockParams).when(#object#filterMapper).buildMap();\n        #Object#DOExample example = #Object#Filter.initDOQueryFilter(mockParams);\n\n        List<#Object#> res = Mockito.mock(List.class);\n        Mockito.doReturn(res).when(#object#dao).selectByExample(example);\n        Iterator iteratorMock = Mockito.mock(Iterator.class);\n        Mockito.when(res.iterator()).thenReturn(iteratorMock);\n        Mockito.when(iteratorMock.hasNext()).thenReturn(true, false);\n        Mockito.when(iteratorMock.next()).thenReturn(entityList);\n        Assert.assertEquals(entityList, #object#Service.getListByFilter(#object#filterMapper), \"异常\");"
+    },
+    {
+      "annotations": "@Test(groups = \"groupGet\", dependsOnMethods = \"getListByFilterTest\")",
+      "name": "public void getFilterMapListTest()",
+      "function": "List<Map<String, Object>> entityMapList = new ArrayList<>();\n        List<#Object#> t1 = Mockito.mock(ArrayList.class);\n        List<#Object#> t2 = null;\n        Mockito.when(#object#Service.getListByFilter(#object#filterMapper)).thenReturn(t1);\n        Mockito.doAnswer(new Answer() {\n            @Override\n            public Object answer(InvocationOnMock invocationOnMock) throws Throwable {\n                Object argument = invocationOnMock.getArgument(0);\n                #Object#.class.getDeclaredMethod(\"accept\", #Object#.class).invoke(argument, 1);\n                return argument;\n            }\n        }).when(t1).forEach(entity -> entityMapList.add(#Object#SimpleMapper.buildMap(entity)));\n        Assert.assertEquals(entityMapList, #object#Service.getFilterMapList(#object#filterMapper), \"异常\");"
+    },
+    {
+      "annotations": "@Test(groups = \"groupPost\", dependsOnMethods = \"getByPKTest\", expectedExceptions = StatusException.class)",
+      "name": "public void postTestException()",
+      "function": "StatusException e = new StatusException(\"POST_ENTITY_DUPLICATE\");\n        #object# = new #Object#();\n        Mockito.when(#object#dao.insertSelective(#Object#Data.convert(#object#, new #Object#DO()))).thenThrow(e);\n        #Object# res = #object#Service.post(#object#);\n        throw e;"
+    },
+    {
+      "annotations": "@Test(groups = \"groupPost\", dependsOnMethods = \"getByPKTest\")",
+      "name": "public void postTest()",
+      "function": " #Object# test = new  #Object#();\n #Object# spy#Object# = Mockito.spy(test);\n        Mockito.when(#object#dao.insertSelective(#Object#Data.convert(test, new #Object#DO()))).thenReturn(1);\n        #Object# res = #object#Service.post(test);"
+    },
+    {
+      "annotations": "@Test(groups = \"groupUpadte\", dependsOnMethods = \"getByPKTest\", expectedExceptions = NullPointerException.class)",
+      "name": "public void updateTest()",
+      "function": "int actual = 1;\n        Mockito.when(#object#dao.updateByPrimaryKeySelective(#Object#Data.convert(#object#, new #Object#DO()))).thenReturn(1);\n        Assert.assertEquals(actual, #object#dao.updateByPrimaryKeySelective(#Object#Data.convert(#object#, new #Object#DO())), \"不相等\");\n"
+    },
+    {
+      "annotations": "@Test(groups = \"groupPut\", dependsOnMethods = \"getByPKTest\")",
+      "name": "public void putTestIsNull()",
+      "function": "#Object# putEntity=new #Object#();\n        putEntity.setId(\"1\");\n        Object actual=null;\n        Mockito.when(#object#Service.getByPK(putEntity.getId())).thenReturn(null);\n        Mockito.when(#object#dao.insertSelective(#Object#Data.convert(putEntity, new #Object#DO()))).thenReturn(1);\n        Assert.assertEquals(actual,#object#Service.put(putEntity),\"不相等\");"
+    },
+    {
+      "annotations": "@Test(groups = \"groupDelete\")",
+      "name": "public void deleteTest()",
+      "function": "String testid = \"1\";\n        AtomicInteger count = new AtomicInteger();\n        Mockito.when(count.addAndGet(#object#dao.deleteByPrimaryKey(testid))).thenReturn(1);\n        int actual = #object#Service.delete(testid);\n        Assert.assertEquals(actual, 1, \"不相等\");"
+    },
+    {
+      "annotations": "@Test(groups = \"groupGet\", dependsOnMethods = \"getCountByFilterTest\")",
+      "name": "public void getRateAndCountByFilterTest()",
+      "function": "Map<String, Map<String, Object>> res = new HashMap<>();\n        List<String> groupBy = Mockito.mock(List.class);\n        res = #object#Service.getFilterListGroup(#object#filterMapper, groupBy);\n        Assert.assertEquals(res.size(), 0, \"不相等\");"
+    }
+  ]
+}

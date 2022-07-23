@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_EVENT_TASK_CREATE",
+  "type":"flow",
+  "title":"创建实体【事件任务管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.EventTask" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.EventTask" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_EVENT_TASK_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_EVENT_TASK_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.EventTask" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.EventTask" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_EVENT_TASK_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_EVENT_TASK_CREATE", "target":"end", "condition":"true" }
+  ]
+}

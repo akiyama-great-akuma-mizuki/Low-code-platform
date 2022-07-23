@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_LEAVE_JOB_RETRIEVE_COUNT_BY_FILTER",
+  "type":"flow",
+  "title":"通过过滤器获取【离职流程】数量",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobFilterMapper" }
+  ],
+  "results":[
+    { "name":"leaveJobCount", "type":"Long" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_RETRIEVE_COUNT_BY_FILTER",
+      "type":"event",
+      "reference":"FLOW_CODE_LEAVE_JOB_RETRIEVE_COUNT_BY_FILTER",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobFilterMapper" }
+      ],
+      "results":[
+        { "name":"leaveJobCount", "type":"Long" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_LEAVE_JOB_RETRIEVE_COUNT_BY_FILTER", "condition":"true" },
+    { "source":"FLOW_NODE_LEAVE_JOB_RETRIEVE_COUNT_BY_FILTER", "target":"end", "condition":"true" }
+  ]
+}

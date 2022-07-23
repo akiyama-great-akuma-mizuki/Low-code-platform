@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PROPERTY_RECORD_UPDATE",
+  "type":"flow",
+  "title":"更新实体【物业缴费记录】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PROPERTY_RECORD_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PROPERTY_RECORD_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PROPERTY_RECORD_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_PROPERTY_RECORD_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

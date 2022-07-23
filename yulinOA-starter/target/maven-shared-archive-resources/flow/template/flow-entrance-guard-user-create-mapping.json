@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ENTRANCE_GUARD_USER_CREATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【用户门禁管理】",
+  "params":[
+    { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUserPostMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUserPostMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ENTRANCE_GUARD_USER_CREATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_ENTRANCE_GUARD_USER_CREATE_MAPPING",
+      "params":[
+        { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUserPostMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUserPostMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ENTRANCE_GUARD_USER_CREATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_ENTRANCE_GUARD_USER_CREATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_HOLIDAY_CHECK_UPDATE",
+  "type":"flow",
+  "title":"更新实体【请假审批管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.HolidayCheck" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.HolidayCheck" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_HOLIDAY_CHECK_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_HOLIDAY_CHECK_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.HolidayCheck" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.HolidayCheck" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_HOLIDAY_CHECK_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_HOLIDAY_CHECK_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

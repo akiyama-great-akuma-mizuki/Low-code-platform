@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_UPDATE",
+  "type":"flow",
+  "title":"更新实体【出差管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PROPERTY_RECORD_CREATE",
+  "type":"flow",
+  "title":"创建实体【物业缴费记录】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PROPERTY_RECORD_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PROPERTY_RECORD_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.PropertyRecord" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PROPERTY_RECORD_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_PROPERTY_RECORD_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id":"FLOW_CREATE_ARCHIVE",
+  "type":"flow",
+  "title":"新建档案流程",
+  "params":[
+    { "name":"archiveManagePostMapper", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManagePostMapper" },
+    { "name":"archiveDetailList", "type":"List" },
+    { "name":"organizationIds", "type":"List" }
+  ],
+  "results":[
+    { "name":"archiveManageResult", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CREATE_ARCHIVEMANAGE",
+      "type":"event",
+      "title":"新建档案实体",
+      "reference":"FLOW_CODE_CREATE_ARCHIVEMANAGE",
+      "params":[
+        { "name":"archivePostMapper", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManagePostMapper" }
+      ],
+      "results":[
+        { "name":"archiveManage", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_CREATE_ORGANIZEARCHIVE",
+      "type":"event",
+      "title":"添加档案可查阅组织",
+      "reference":"FLOW_NODE_CREATE_ORGANIZEARCHIVE",
+      "params":[
+        { "name":"archiveManage", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" },
+        { "name":"organizationIds", "type":"List" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_ARCHIVE_ADD_DETAIL",
+      "type":"event",
+      "title":"添加档案详情",
+      "reference":"FLOW_NODE_ARCHIVE_ADD_DETAIL",
+      "params":[
+        { "name":"archiveManage", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" },
+        { "name":"archiveDetailList", "type":"List" }
+      ],
+      "results":[
+        { "name":"archiveManageResult", "type":"com.horsecoder.yulinOA.sys.model.ArchiveManage" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CREATE_ARCHIVEMANAGE", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_ORGANIZEARCHIVE", "target":"end", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_ARCHIVEMANAGE", "target":"FLOW_NODE_ARCHIVE_ADD_DETAIL", "condition":"true" },
+    { "source":"FLOW_NODE_ARCHIVE_ADD_DETAIL", "target":"FLOW_NODE_CREATE_ORGANIZEARCHIVE", "condition":"true" }
+  ]
+}

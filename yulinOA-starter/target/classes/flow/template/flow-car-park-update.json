@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CAR_PARK_UPDATE",
+  "type":"flow",
+  "title":"更新实体【车辆停车管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.CarPark" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CarPark" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CAR_PARK_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_CAR_PARK_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.CarPark" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CarPark" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CAR_PARK_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_CAR_PARK_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

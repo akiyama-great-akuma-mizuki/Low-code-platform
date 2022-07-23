@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ARCHIVE_DETAIL_RETRIEVE_FILTER_DETAIL_MAP_LIST",
+  "type":"flow",
+  "title":"通过过滤器获取【档案详细管理】详情列表",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.ArchiveDetailFilterMapper" }
+  ],
+  "results":[
+    { "name":"archiveDetailDetailMapList", "type":"List" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ARCHIVE_DETAIL_RETRIEVE_FILTER_DETAIL_MAP_LIST",
+      "type":"event",
+      "reference":"FLOW_CODE_ARCHIVE_DETAIL_RETRIEVE_FILTER_DETAIL_MAP_LIST",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.ArchiveDetailFilterMapper" }
+      ],
+      "results":[
+        { "name":"archiveDetailDetailMapList", "type":"List" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ARCHIVE_DETAIL_RETRIEVE_FILTER_DETAIL_MAP_LIST", "condition":"true" },
+    { "source":"FLOW_NODE_ARCHIVE_DETAIL_RETRIEVE_FILTER_DETAIL_MAP_LIST", "target":"end", "condition":"true" }
+  ]
+}

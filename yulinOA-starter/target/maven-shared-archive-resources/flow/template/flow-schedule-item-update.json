@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SCHEDULE_ITEM_UPDATE",
+  "type":"flow",
+  "title":"更新实体【日程项管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SCHEDULE_ITEM_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_SCHEDULE_ITEM_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SCHEDULE_ITEM_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_ITEM_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

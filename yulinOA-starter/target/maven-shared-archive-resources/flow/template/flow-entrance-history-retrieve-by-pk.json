@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ENTRANCE_HISTORY_RETRIEVE_BY_PK",
+  "type":"flow",
+  "title":"通过主键获取【门禁历史记录】实体",
+  "params":[
+    { "name":"key", "type":"String" }
+  ],
+  "results":[
+    { "name":"entranceHistory", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistory" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ENTRANCE_HISTORY_RETRIEVE_BY_PK",
+      "type":"event",
+      "reference":"FLOW_CODE_ENTRANCE_HISTORY_RETRIEVE_BY_PK",
+      "params":[
+        { "name":"key", "type":"String" }
+      ],
+      "results":[
+        { "name":"entranceHistory", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistory" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ENTRANCE_HISTORY_RETRIEVE_BY_PK", "condition":"true" },
+    { "source":"FLOW_NODE_ENTRANCE_HISTORY_RETRIEVE_BY_PK", "target":"end", "condition":"true" }
+  ]
+}

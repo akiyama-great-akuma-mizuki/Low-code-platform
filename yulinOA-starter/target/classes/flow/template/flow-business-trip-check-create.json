@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_CHECK_CREATE",
+  "type":"flow",
+  "title":"创建实体【出差审批管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheck" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheck" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_CHECK_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_CHECK_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheck" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripCheck" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_CHECK_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_CHECK_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_HOLIDAY_RETRIEVE_BY_PK",
+  "type":"flow",
+  "title":"通过主键获取【请假管理】实体",
+  "params":[
+    { "name":"key", "type":"String" }
+  ],
+  "results":[
+    { "name":"holiday", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_HOLIDAY_RETRIEVE_BY_PK",
+      "type":"event",
+      "reference":"FLOW_CODE_HOLIDAY_RETRIEVE_BY_PK",
+      "params":[
+        { "name":"key", "type":"String" }
+      ],
+      "results":[
+        { "name":"holiday", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_HOLIDAY_RETRIEVE_BY_PK", "condition":"true" },
+    { "source":"FLOW_NODE_HOLIDAY_RETRIEVE_BY_PK", "target":"end", "condition":"true" }
+  ]
+}

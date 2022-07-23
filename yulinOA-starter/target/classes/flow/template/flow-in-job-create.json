@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_IN_JOB_CREATE",
+  "type":"flow",
+  "title":"创建实体【入职流程】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.InJob" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.InJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_IN_JOB_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_IN_JOB_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.InJob" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.InJob" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_IN_JOB_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_IN_JOB_CREATE", "target":"end", "condition":"true" }
+  ]
+}

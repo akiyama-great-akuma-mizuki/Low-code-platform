@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PARK_PARK_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【园区停车场】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkParkUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkParkUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PARK_PARK_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_PARK_PARK_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkParkUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.ParkParkUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PARK_PARK_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_PARK_PARK_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

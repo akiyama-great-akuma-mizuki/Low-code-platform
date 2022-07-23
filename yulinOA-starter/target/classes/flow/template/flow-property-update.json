@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PROPERTY_UPDATE",
+  "type":"flow",
+  "title":"更新实体【物业服务】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PROPERTY_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PROPERTY_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Property" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PROPERTY_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_PROPERTY_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

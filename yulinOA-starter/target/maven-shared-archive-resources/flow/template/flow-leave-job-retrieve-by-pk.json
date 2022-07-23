@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_LEAVE_JOB_RETRIEVE_BY_PK",
+  "type":"flow",
+  "title":"通过主键获取【离职流程】实体",
+  "params":[
+    { "name":"key", "type":"String" }
+  ],
+  "results":[
+    { "name":"leaveJob", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_RETRIEVE_BY_PK",
+      "type":"event",
+      "reference":"FLOW_CODE_LEAVE_JOB_RETRIEVE_BY_PK",
+      "params":[
+        { "name":"key", "type":"String" }
+      ],
+      "results":[
+        { "name":"leaveJob", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_LEAVE_JOB_RETRIEVE_BY_PK", "condition":"true" },
+    { "source":"FLOW_NODE_LEAVE_JOB_RETRIEVE_BY_PK", "target":"end", "condition":"true" }
+  ]
+}

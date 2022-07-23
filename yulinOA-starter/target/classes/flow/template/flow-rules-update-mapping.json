@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_RULES_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【制度管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_RULES_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_RULES_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_RULES_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_RULES_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

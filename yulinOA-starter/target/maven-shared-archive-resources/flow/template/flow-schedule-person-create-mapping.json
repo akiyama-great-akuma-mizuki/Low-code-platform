@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SCHEDULE_PERSON_CREATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【日程参与人员管理】",
+  "params":[
+    { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.SchedulePersonPostMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.SchedulePersonPostMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SCHEDULE_PERSON_CREATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_SCHEDULE_PERSON_CREATE_MAPPING",
+      "params":[
+        { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.SchedulePersonPostMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.SchedulePersonPostMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SCHEDULE_PERSON_CREATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_PERSON_CREATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

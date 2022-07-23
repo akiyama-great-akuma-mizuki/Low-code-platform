@@ -1,0 +1,33 @@
+{
+  "id":"FLOW_SCHEDULE_DELETE",
+  "type":"flow",
+  "title":"删除日程",
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SCHEDULE_DELETE",
+      "type":"event",
+      "title":"删除日程",
+      "reference":"FLOW_CODE_SCHEDULE_DELETE",
+      "params":[
+        { "name":"scheduleUpdateMapper", "type":"com.horsecoder.yulinOA.sys.model.ScheduleUpdateMapper" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_SCHEDULE_ITEMS_DELETE",
+      "type":"event",
+      "title":"删除日程所有日程项",
+      "reference":"FLOW_CODE_SCHEDULE_ITEMS_DELETE",
+      "params":[
+        { "name":"scheduleItemUpdateMapper", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItemUpdateMapper" }
+      ],
+      "results":[
+        { "name":"scheduleDetailMapper", "type":"com.horsecoder.yulinOA.sys.model.ScheduleDetailMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SCHEDULE_DELETE", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_DELETE", "target":"FLOW_NODE_SCHEDULE_ITEMS_DELETE", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_ITEMS_DELETE", "target":"end", "condition":"true" }
+  ]
+}

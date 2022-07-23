@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_LEAVE_JOB_UPDATE",
+  "type":"flow",
+  "title":"更新实体【离职流程】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_LEAVE_JOB_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_LEAVE_JOB_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_LEAVE_JOB_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

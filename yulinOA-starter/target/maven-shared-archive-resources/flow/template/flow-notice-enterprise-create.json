@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NOTICE_ENTERPRISE_CREATE",
+  "type":"flow",
+  "title":"创建实体【公告查阅企业管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NOTICE_ENTERPRISE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_NOTICE_ENTERPRISE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterprise" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NOTICE_ENTERPRISE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_NOTICE_ENTERPRISE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

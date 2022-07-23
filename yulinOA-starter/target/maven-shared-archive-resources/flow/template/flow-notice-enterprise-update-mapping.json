@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NOTICE_ENTERPRISE_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【公告查阅企业管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterpriseUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterpriseUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NOTICE_ENTERPRISE_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_NOTICE_ENTERPRISE_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterpriseUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.NoticeEnterpriseUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NOTICE_ENTERPRISE_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_NOTICE_ENTERPRISE_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

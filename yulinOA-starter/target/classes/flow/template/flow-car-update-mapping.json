@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CAR_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【车辆管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.CarUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.CarUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CAR_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_CAR_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.CarUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.CarUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CAR_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_CAR_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

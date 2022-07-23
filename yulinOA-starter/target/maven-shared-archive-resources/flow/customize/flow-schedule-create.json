@@ -1,0 +1,23 @@
+{
+  "id":"FLOW_SCHEDULE_CREATE",
+  "type":"flow",
+  "title":"新建日程",
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CREATE_SCHEDULE",
+      "type":"event",
+      "title":"新建日程",
+      "reference":"FLOW_CODE_CREATE_SCHEDULE",
+      "params":[
+        { "name":"schedulePostMapper", "type":"com.horsecoder.yulinOA.sys.model.SchedulePostMapper" }
+      ],
+      "results":[
+        { "name":"schedule", "type":"com.horsecoder.yulinOA.sys.model.Schedule" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CREATE_SCHEDULE", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_SCHEDULE", "target":"end", "condition":"true" }
+  ]
+}

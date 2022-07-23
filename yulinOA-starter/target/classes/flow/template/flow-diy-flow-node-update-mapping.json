@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_DIY_FLOW_NODE_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【自定义流程节点管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNodeUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNodeUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DIY_FLOW_NODE_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_DIY_FLOW_NODE_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNodeUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.DiyFlowNodeUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DIY_FLOW_NODE_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_DIY_FLOW_NODE_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

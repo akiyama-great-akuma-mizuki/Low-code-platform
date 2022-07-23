@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_PEOPLE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【出差同行人管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_PEOPLE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

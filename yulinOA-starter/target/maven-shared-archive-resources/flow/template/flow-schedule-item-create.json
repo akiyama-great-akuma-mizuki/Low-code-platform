@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SCHEDULE_ITEM_CREATE",
+  "type":"flow",
+  "title":"创建实体【日程项管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SCHEDULE_ITEM_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_SCHEDULE_ITEM_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ScheduleItem" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SCHEDULE_ITEM_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_SCHEDULE_ITEM_CREATE", "target":"end", "condition":"true" }
+  ]
+}

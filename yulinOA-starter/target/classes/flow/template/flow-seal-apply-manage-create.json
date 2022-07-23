@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SEAL_APPLY_MANAGE_CREATE",
+  "type":"flow",
+  "title":"创建实体【印章申请管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManage" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManage" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SEAL_APPLY_MANAGE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_SEAL_APPLY_MANAGE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManage" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManage" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SEAL_APPLY_MANAGE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_SEAL_APPLY_MANAGE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id":"FLOW_GET_USER_SCHEDULE",
+  "type":"flow",
+  "title":"查询用户日程",
+  "params":[
+    { "name":"scheduleFilterMapper", "type":"com.horsecoder.yulinOA.sys.model.ScheduleFilterMapper" }
+  ],
+  "results":[
+    { "name":"scheduleDetailMapList", "type":"List" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_GET_USER_SCHEDULE",
+      "type":"event",
+      "title":"日程查询",
+      "reference":"FLOW_CODE_GET_USER_SCHEDULE",
+      "params":[
+        { "name":"scheduleFilterMapper", "type":"com.horsecoder.yulinOA.sys.model.ScheduleFilterMapper" }
+      ],
+      "results":[
+        { "name":"scheduleDetailMapList", "type":"List" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_GET_USER_SCHEDULE", "condition":"true" },
+    { "source":"FLOW_NODE_GET_USER_SCHEDULE", "target":"end", "condition":"true" }
+  ]
+}

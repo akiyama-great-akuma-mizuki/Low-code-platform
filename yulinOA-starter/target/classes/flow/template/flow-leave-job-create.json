@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_LEAVE_JOB_CREATE",
+  "type":"flow",
+  "title":"创建实体【离职流程】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_LEAVE_JOB_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_LEAVE_JOB_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_LEAVE_JOB_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_PEOPLE_CREATE",
+  "type":"flow",
+  "title":"创建实体【出差同行人管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_PEOPLE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPeople" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_PEOPLE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

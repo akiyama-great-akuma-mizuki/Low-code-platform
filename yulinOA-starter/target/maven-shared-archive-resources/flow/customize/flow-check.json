@@ -1,0 +1,33 @@
+{
+  "id":"FLOW_CHECK",
+  "type":"flow",
+  "title":"进行通用审批流程",
+  "params":[
+    { "name":"checkPersonId", "type":"String" },
+    { "name":"status", "type":"Integer" }
+  ],
+  "results":[
+    { "name":"checkPerson", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" },
+    { "name":"totalStatus", "type":"Integer" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CHECK",
+      "type":"event",
+      "title":"进行审批",
+      "reference":"FLOW_CODE_CHECK",
+      "params":[
+        { "name":"checkPersonId", "type":"String" },
+        { "name":"status", "type":"Integer" }
+      ],
+      "results":[
+        { "name":"checkPerson", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" },
+        { "name":"totalStatus", "type":"Integer" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CHECK", "condition":"true" },
+    { "source":"FLOW_NODE_CHECK", "target":"end", "condition":"true" }
+  ]
+}

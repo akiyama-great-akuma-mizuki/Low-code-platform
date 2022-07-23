@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ENTRANCE_GUARD_USER_CREATE",
+  "type":"flow",
+  "title":"创建实体【用户门禁管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUser" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUser" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ENTRANCE_GUARD_USER_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_ENTRANCE_GUARD_USER_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUser" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.EntranceGuardUser" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ENTRANCE_GUARD_USER_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_ENTRANCE_GUARD_USER_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ENTRANCE_HISTORY_RETRIEVE_COUNT_BY_FILTER",
+  "type":"flow",
+  "title":"通过过滤器获取【门禁历史记录】数量",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistoryFilterMapper" }
+  ],
+  "results":[
+    { "name":"entranceHistoryCount", "type":"Long" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ENTRANCE_HISTORY_RETRIEVE_COUNT_BY_FILTER",
+      "type":"event",
+      "reference":"FLOW_CODE_ENTRANCE_HISTORY_RETRIEVE_COUNT_BY_FILTER",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.EntranceHistoryFilterMapper" }
+      ],
+      "results":[
+        { "name":"entranceHistoryCount", "type":"Long" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ENTRANCE_HISTORY_RETRIEVE_COUNT_BY_FILTER", "condition":"true" },
+    { "source":"FLOW_NODE_ENTRANCE_HISTORY_RETRIEVE_COUNT_BY_FILTER", "target":"end", "condition":"true" }
+  ]
+}

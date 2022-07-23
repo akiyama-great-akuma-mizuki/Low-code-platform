@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_LEAVE_JOB_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【离职流程】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_LEAVE_JOB_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_LEAVE_JOB_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_LEAVE_JOB_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

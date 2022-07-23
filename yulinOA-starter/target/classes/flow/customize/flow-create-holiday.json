@@ -1,0 +1,39 @@
+{
+  "id":"FLOW_CREATE_HOLIDAY",
+  "type":"flow",
+  "title":"新建请假流程",
+  "params":[
+    { "name":"holidayPostMapper", "type":"com.horsecoder.yulinOA.sys.model.HolidayPostMapper" }
+  ],
+  "results":[
+    { "name":"holiday", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CREARE_HOLIDAY",
+      "type":"event",
+      "title":"新建请假记录实体",
+      "reference":"FLOW_CODE_CREARE_HOLIDAY",
+      "params":[
+        { "name":"holidayPostMapper", "type":"com.horsecoder.yulinOA.sys.model.HolidayPostMapper" }
+      ],
+      "results":[
+        { "name":"holiday", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_CHECK",
+      "type":"event",
+      "title":"接入通用审批",
+      "reference":"FLOW_CODE_CHECK",
+      "params":[
+        { "name":"holiday", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CREARE_HOLIDAY", "condition":"true" },
+    { "source":"FLOW_NODE_CREARE_HOLIDAY", "target":"FLOW_NODE_CHECK", "condition":"true" },
+    { "source":"FLOW_NODE_CHECK", "target":"end", "condition":"true" }
+  ]
+}

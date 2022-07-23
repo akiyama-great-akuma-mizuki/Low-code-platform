@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CHECK_PERSON_RETRIEVE_BY_PK",
+  "type":"flow",
+  "title":"通过主键获取【审批人审批管理】实体",
+  "params":[
+    { "name":"key", "type":"String" }
+  ],
+  "results":[
+    { "name":"checkPerson", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CHECK_PERSON_RETRIEVE_BY_PK",
+      "type":"event",
+      "reference":"FLOW_CODE_CHECK_PERSON_RETRIEVE_BY_PK",
+      "params":[
+        { "name":"key", "type":"String" }
+      ],
+      "results":[
+        { "name":"checkPerson", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CHECK_PERSON_RETRIEVE_BY_PK", "condition":"true" },
+    { "source":"FLOW_NODE_CHECK_PERSON_RETRIEVE_BY_PK", "target":"end", "condition":"true" }
+  ]
+}

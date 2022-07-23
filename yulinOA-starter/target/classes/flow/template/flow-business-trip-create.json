@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BUSINESS_TRIP_CREATE",
+  "type":"flow",
+  "title":"创建实体【出差管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BUSINESS_TRIP_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BUSINESS_TRIP_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BUSINESS_TRIP_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_BUSINESS_TRIP_CREATE", "target":"end", "condition":"true" }
+  ]
+}

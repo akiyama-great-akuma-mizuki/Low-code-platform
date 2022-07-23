@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_KNOWLEDGE_CREATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【知识管理】",
+  "params":[
+    { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.KnowledgePostMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.KnowledgePostMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_KNOWLEDGE_CREATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_KNOWLEDGE_CREATE_MAPPING",
+      "params":[
+        { "name":"postMapper", "type":"com.horsecoder.yulinOA.sys.model.KnowledgePostMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.KnowledgePostMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_KNOWLEDGE_CREATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_KNOWLEDGE_CREATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ORGANIZE_ARCHIVE_DELETE",
+  "type":"flow",
+  "title":"通过主键删除【组织查阅档案管理】",
+  "params":[
+    { "name":"deleteKey", "type":"String" }
+  ],
+  "results":[
+    { "name":"deleteCount", "type":"Integer" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ORGANIZE_ARCHIVE_DELETE",
+      "type":"event",
+      "reference":"FLOW_CODE_ORGANIZE_ARCHIVE_DELETE",
+      "params":[
+        { "name":"deleteKey", "type":"String" }
+      ],
+      "results":[
+        { "name":"deleteCount", "type":"Integer" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ORGANIZE_ARCHIVE_DELETE", "condition":"true" },
+    { "source":"FLOW_NODE_ORGANIZE_ARCHIVE_DELETE", "target":"end", "condition":"true" }
+  ]
+}

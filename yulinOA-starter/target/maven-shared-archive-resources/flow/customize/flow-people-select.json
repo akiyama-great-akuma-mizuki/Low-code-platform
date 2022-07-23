@@ -1,0 +1,23 @@
+{
+  "id":"FLOW_PEOPLE_SELECT",
+  "type":"flow",
+  "title":"会议成员筛选",
+  "params":[
+    { "name":"userId", "type":"String" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PEOPLE_SELECT",
+      "type":"event",
+      "title":"会议成员筛选",
+      "reference":"FLOW_CODE_PEOPLE_SELECT",
+      "params":[
+        { "name":"userId", "type":"String" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PEOPLE_SELECT", "condition":"true" },
+    { "source":"FLOW_NODE_PEOPLE_SELECT", "target":"end", "condition":"true" }
+  ]
+}

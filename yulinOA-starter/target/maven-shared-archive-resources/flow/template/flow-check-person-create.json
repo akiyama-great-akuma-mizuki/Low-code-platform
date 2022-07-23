@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CHECK_PERSON_CREATE",
+  "type":"flow",
+  "title":"创建实体【审批人审批管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CHECK_PERSON_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_CHECK_PERSON_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CHECK_PERSON_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_CHECK_PERSON_CREATE", "target":"end", "condition":"true" }
+  ]
+}

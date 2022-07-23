@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_MEETING_UPDATE",
+  "type":"flow",
+  "title":"更新实体【会议管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_MEETING_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_MEETING_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Meeting" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_MEETING_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_MEETING_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

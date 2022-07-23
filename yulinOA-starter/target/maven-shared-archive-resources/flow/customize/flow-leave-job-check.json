@@ -1,0 +1,47 @@
+{
+  "id":"FLOW_LEAVE_JOB_CHECK",
+  "type":"flow",
+  "title":"审批离职流程",
+  "params":[
+    { "name":"leaveJobId", "type":"String" },
+    { "name":"status", "type":"Integer" },
+    { "name":"checkPersonId", "type":"String" }
+  ],
+  "results":[
+    { "name":"leaveJob", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_UPDATE",
+      "type":"event",
+      "title":"更新离职流程状态",
+      "reference":"FLOW_CODE_LEAVE_JOB_UPDATE",
+      "params":[
+        { "name":"totalStatus", "type":"Integer" },
+        { "name":"leaveJobId", "type":"String" }
+      ],
+      "results":[
+        { "name":"leaveJob", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ]
+    },
+    {
+      "id":"FLOW_CHECK",
+      "type":"flow",
+      "title":"进行通用审批流程",
+      "reference":"FLOW_CHECK",
+      "params":[
+        { "name":"checkPersonId", "type":"String" },
+        { "name":"status", "type":"Integer" }
+      ],
+      "results":[
+        { "name":"checkPerson", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" },
+        { "name":"totalStatus", "type":"Integer" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"FLOW_NODE_LEAVE_JOB_UPDATE", "target":"end", "condition":"true" },
+    { "source":"start", "target":"FLOW_CHECK", "condition":"true" },
+    { "source":"FLOW_CHECK", "target":"FLOW_NODE_LEAVE_JOB_UPDATE", "condition":"true" }
+  ]
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="carTest">
+        <groups>
+            <run>
+                <include name="groupGet"></include>
+                <include name="groupPost"></include>
+                <include name="groupPut"></include>
+                <include name="groupUpdate"></include>
+                <include name="groupDelete"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="model.carTest"></class>
+        </classes>
+    </test>
+    <test name="CarTest">
+    <groups>
+        <run>
+            <include name="groupGet"></include>
+            <include name="groupPost"></include>
+            <include name="groupPut"></include>
+            <include name="groupUpdate"></include>
+            <include name="groupDelete"></include>
+        </run>
+    </groups>
+    <classes>
+        <class name="com.code.testCore.test.Cartest"></class>
+    </classes>
+</test>
+    <test name="CheckTest">
+    <groups>
+        <run>
+            <include name="groupGet"></include>
+            <include name="groupPost"></include>
+            <include name="groupPut"></include>
+            <include name="groupUpdate"></include>
+            <include name="groupDelete"></include>
+        </run>
+    </groups>
+    <classes>
+        <class name="com.code.testCore.test.Checktest"></class>
+    </classes>
+</test>
+<test name="DiyFlowFinishTest">
+<groups>
+    <run>
+        <include name="groupGet"></include>
+        <include name="groupPost"></include>
+        <include name="groupPut"></include>
+        <include name="groupUpdate"></include>
+        <include name="groupDelete"></include>
+    </run>
+</groups>
+<classes>
+    <class name="com.code.testCore.test.DiyFlowFinishtest"></class>
+</classes>
+</test>
+    <test name="DiyFlowTextTest">
+        <groups>
+            <run>
+                <include name="groupGet"></include>
+                <include name="groupPost"></include>
+                <include name="groupPut"></include>
+                <include name="groupUpdate"></include>
+                <include name="groupDelete"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.code.testCore.test.DiyFlowTexttest"></class>
+        </classes>
+    </test>
+    <test name="ParkParkTest">
+        <groups>
+            <run>
+                <include name="groupGet"></include>
+                <include name="groupPost"></include>
+                <include name="groupPut"></include>
+                <include name="groupUpdate"></include>
+                <include name="groupDelete"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.code.testCore.test.ParkParktest"></class>
+        </classes>
+    </test>
+</suite>

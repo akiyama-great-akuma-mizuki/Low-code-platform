@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_PARK_PARK_UPDATE",
+  "type":"flow",
+  "title":"更新实体【园区停车场】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPark" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPark" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_PARK_PARK_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_PARK_PARK_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPark" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ParkPark" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_PARK_PARK_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_PARK_PARK_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

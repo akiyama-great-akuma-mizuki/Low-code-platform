@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_NEWS_UPDATE",
+  "type":"flow",
+  "title":"更新实体【新闻管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_NEWS_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_NEWS_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.News" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_NEWS_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_NEWS_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

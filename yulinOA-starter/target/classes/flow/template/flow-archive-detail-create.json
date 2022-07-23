@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_ARCHIVE_DETAIL_CREATE",
+  "type":"flow",
+  "title":"创建实体【档案详细管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveDetail" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveDetail" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_ARCHIVE_DETAIL_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_ARCHIVE_DETAIL_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveDetail" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.ArchiveDetail" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_ARCHIVE_DETAIL_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_ARCHIVE_DETAIL_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CUSTOM_SCHEDULE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【自定义日程】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CUSTOM_SCHEDULE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_CUSTOM_SCHEDULE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CUSTOM_SCHEDULE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_CUSTOM_SCHEDULE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

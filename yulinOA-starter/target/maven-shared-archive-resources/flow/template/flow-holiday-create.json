@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_HOLIDAY_CREATE",
+  "type":"flow",
+  "title":"创建实体【请假管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_HOLIDAY_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_HOLIDAY_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Holiday" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_HOLIDAY_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_HOLIDAY_CREATE", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id":"FLOW_RULES_CREATE",
+  "type":"flow",
+  "title":"新建制度流程",
+  "params":[
+    { "name":"rulesPostMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesPostMapper" },
+    { "name":"fileUrlList", "type":"List" },
+    { "name":"departmentIdList", "type":"List" }
+  ],
+  "results":[
+    { "name":"rules", "type":"com.horsecoder.yulinOA.sys.model.Rules" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CREATE_RULES",
+      "type":"event",
+      "title":"新建制度",
+      "reference":"FLOW_CODE_CREATE_RULES",
+      "params":[
+        { "name":"rulesPostMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesPostMapper" }
+      ],
+      "results":[
+        { "name":"rulesId", "type":"String" },
+        { "name":"rules", "type":"com.horsecoder.yulinOA.sys.model.Rules" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_CREATE_RULES_EXECUTE",
+      "type":"event",
+      "title":"新建制度执行",
+      "reference":"FLOW_CODE_CREATE_RULES_EXECUTE",
+      "params":[
+        { "name":"departmentIdList", "type":"List" },
+        { "name":"rulesId", "type":"String" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_RULES_FILE_CREATE",
+      "type":"event",
+      "title":"新建制度文件",
+      "reference":"FLOW_CODE_RULES_FILE_CREATE",
+      "params":[
+        { "name":"fileUrlList", "type":"List" },
+        { "name":"rulesId", "type":"String" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CREATE_RULES", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_RULES", "target":"FLOW_NODE_CREATE_RULES_EXECUTE", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_RULES_EXECUTE", "target":"FLOW_NODE_RULES_FILE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_RULES_FILE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

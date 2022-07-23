@@ -1,0 +1,44 @@
+{
+  "id":"FLOW_LEAVE_JOB_CREATE",
+  "type":"flow",
+  "title":"新建离职流程",
+  "params":[
+    { "name":"leaveJobPostMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobPostMapper" }
+  ],
+  "results":[
+    { "name":"leaveJob", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_LEAVE_JOB_CREATE",
+      "type":"event",
+      "title":"新建离职流程实体",
+      "reference":"FLOW_CODE_LEAVE_JOB_CREATE",
+      "params":[
+        { "name":"leaveJobPostMapper", "type":"com.horsecoder.yulinOA.sys.model.LeaveJobPostMapper" }
+      ],
+      "results":[
+        { "name":"eventId", "type":"String" },
+        { "name":"type", "type":"Integer" },
+        { "name":"checkPersonList", "type":"List" },
+        { "name":"leaveJob", "type":"com.horsecoder.yulinOA.sys.model.LeaveJob" }
+      ]
+    },
+    {
+      "id":"FLOW_CREATE_CHECK",
+      "type":"flow",
+      "title":"通用发起审批流程",
+      "reference":"FLOW_CREATE_CHECK",
+      "params":[
+        { "name":"eventId", "type":"String" },
+        { "name":"checkPersonList", "type":"List" },
+        { "name":"type", "type":"Integer" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_LEAVE_JOB_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_LEAVE_JOB_CREATE", "target":"FLOW_CREATE_CHECK", "condition":"true" },
+    { "source":"FLOW_CREATE_CHECK", "target":"end", "condition":"true" }
+  ]
+}

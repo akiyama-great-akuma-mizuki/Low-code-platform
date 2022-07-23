@@ -1,0 +1,29 @@
+{
+  "id":"FLOW_GET_ENTERPRISE_FLOW",
+  "type":"flow",
+  "title":"流程管理查询该企业所有流程",
+  "params":[
+    { "name":"enterpriseId", "type":"String" }
+  ],
+  "results":[
+    { "name":"flowList", "type":"String" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_GET_ALL_ENTERPRISE_FLOW",
+      "type":"event",
+      "title":"查询该企业所有自定义流程节点",
+      "reference":"FLOW_CODE_GET_ALL_ENTERPRISE_FLOW",
+      "params":[
+        { "name":"enterpriseId", "type":"String" }
+      ],
+      "results":[
+        { "name":"flowList", "type":"String" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_GET_ALL_ENTERPRISE_FLOW", "condition":"true" },
+    { "source":"FLOW_NODE_GET_ALL_ENTERPRISE_FLOW", "target":"end", "condition":"true" }
+  ]
+}

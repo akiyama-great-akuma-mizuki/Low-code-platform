@@ -1,0 +1,43 @@
+{
+  "id":"FLOW_CREATE_CHECK",
+  "type":"flow",
+  "title":"通用发起审批流程",
+  "params":[
+    { "name":"eventId", "type":"String" },
+    { "name":"checkPersonList", "type":"List" },
+    { "name":"type", "type":"Integer" }
+  ],
+  "results":[
+    { "name":"check", "type":"com.horsecoder.yulinOA.sys.model.Check" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CREATE_CHECK_ENTITY",
+      "type":"event",
+      "title":"新建审批实体",
+      "reference":"FLOW_CODE_CREATE_CHECK_ENTITY",
+      "params":[
+        { "name":"eventId", "type":"String" },
+        { "name":"type", "type":"Integer" }
+      ],
+      "results":[
+        { "name":"check", "type":"com.horsecoder.yulinOA.sys.model.Check" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_CREATE_CHECK_PERSON_LIST",
+      "type":"event",
+      "title":"新建审批人列表",
+      "reference":"FLOW_CODE_CREATE_CHECK_PERSON_LIST",
+      "params":[
+        { "name":"check", "type":"com.horsecoder.yulinOA.sys.model.Check" },
+        { "name":"checkPersonList", "type":"List" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CREATE_CHECK_ENTITY", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_CHECK_ENTITY", "target":"FLOW_NODE_CREATE_CHECK_PERSON_LIST", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_CHECK_PERSON_LIST", "target":"end", "condition":"true" }
+  ]
+}

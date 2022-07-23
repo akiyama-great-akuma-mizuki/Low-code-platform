@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_BLACKLIST_CREATE",
+  "type":"flow",
+  "title":"创建实体【黑名单管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_BLACKLIST_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_BLACKLIST_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.Blacklist" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_BLACKLIST_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_BLACKLIST_CREATE", "target":"end", "condition":"true" }
+  ]
+}

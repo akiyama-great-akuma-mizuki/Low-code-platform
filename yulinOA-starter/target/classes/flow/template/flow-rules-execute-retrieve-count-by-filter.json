@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_RULES_EXECUTE_RETRIEVE_COUNT_BY_FILTER",
+  "type":"flow",
+  "title":"通过过滤器获取【制度执行管理】数量",
+  "params":[
+    { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesExecuteFilterMapper" }
+  ],
+  "results":[
+    { "name":"rulesExecuteCount", "type":"Long" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_RULES_EXECUTE_RETRIEVE_COUNT_BY_FILTER",
+      "type":"event",
+      "reference":"FLOW_CODE_RULES_EXECUTE_RETRIEVE_COUNT_BY_FILTER",
+      "params":[
+        { "name":"filterMapper", "type":"com.horsecoder.yulinOA.sys.model.RulesExecuteFilterMapper" }
+      ],
+      "results":[
+        { "name":"rulesExecuteCount", "type":"Long" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_RULES_EXECUTE_RETRIEVE_COUNT_BY_FILTER", "condition":"true" },
+    { "source":"FLOW_NODE_RULES_EXECUTE_RETRIEVE_COUNT_BY_FILTER", "target":"end", "condition":"true" }
+  ]
+}

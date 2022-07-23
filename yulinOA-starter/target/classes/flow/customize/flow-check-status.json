@@ -1,0 +1,29 @@
+{
+  "id":"FLOW_CHECK_STATUS",
+  "type":"flow",
+  "title":"获取通用审批状态流程",
+  "params":[
+    { "name":"checkId", "type":"String" }
+  ],
+  "results":[
+    { "name":"checkDetailMap", "type":"Map" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CHECK_STATUS",
+      "type":"event",
+      "title":"获取审批状态",
+      "reference":"FLOW_CODE_CHECK_STATUS",
+      "params":[
+        { "name":"checkId", "type":"String" }
+      ],
+      "results":[
+        { "name":"checkDetailMap", "type":"Map" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CHECK_STATUS", "condition":"true" },
+    { "source":"FLOW_NODE_CHECK_STATUS", "target":"end", "condition":"true" }
+  ]
+}

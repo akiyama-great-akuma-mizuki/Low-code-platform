@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_HOLIDAY_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【请假管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.HolidayUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.HolidayUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_HOLIDAY_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_HOLIDAY_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.HolidayUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.HolidayUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_HOLIDAY_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_HOLIDAY_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

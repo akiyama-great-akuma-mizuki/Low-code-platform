@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SEAL_HOLD_MANAGE_UPDATE",
+  "type":"flow",
+  "title":"更新实体【印章持有管理】",
+  "params":[
+    { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.SealHoldManage" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.SealHoldManage" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SEAL_HOLD_MANAGE_UPDATE",
+      "type":"event",
+      "reference":"FLOW_CODE_SEAL_HOLD_MANAGE_UPDATE",
+      "params":[
+        { "name":"updateEntity", "type":"com.horsecoder.yulinOA.sys.model.SealHoldManage" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.SealHoldManage" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SEAL_HOLD_MANAGE_UPDATE", "condition":"true" },
+    { "source":"FLOW_NODE_SEAL_HOLD_MANAGE_UPDATE", "target":"end", "condition":"true" }
+  ]
+}

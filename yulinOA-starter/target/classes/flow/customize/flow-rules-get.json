@@ -1,0 +1,17 @@
+{
+  "id":"FLOW_RULES_GET",
+  "type":"flow",
+  "title":"查看制度流程",
+  "nodes":[
+    {
+      "id":"FLOW_NODE_DEFAULT",
+      "type":"event",
+      "title":"查看制度详情列表",
+      "reference":"FLOW_CODE_DEFAULT"
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_DEFAULT", "condition":"true" },
+    { "source":"FLOW_NODE_DEFAULT", "target":"end", "condition":"true" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_SEAL_APPLY_MANAGE_UPDATE_MAPPING",
+  "type":"flow",
+  "title":"通过Mapping创建实体【印章申请管理】",
+  "params":[
+    { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManageUpdateMapper" }
+  ],
+  "results":[
+    { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManageUpdateMapper" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_SEAL_APPLY_MANAGE_UPDATE_MAPPING",
+      "type":"event",
+      "reference":"FLOW_CODE_SEAL_APPLY_MANAGE_UPDATE_MAPPING",
+      "params":[
+        { "name":"updateMapper", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManageUpdateMapper" }
+      ],
+      "results":[
+        { "name":"resultMapper", "type":"com.horsecoder.yulinOA.sys.model.SealApplyManageUpdateMapper" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_SEAL_APPLY_MANAGE_UPDATE_MAPPING", "condition":"true" },
+    { "source":"FLOW_NODE_SEAL_APPLY_MANAGE_UPDATE_MAPPING", "target":"end", "condition":"true" }
+  ]
+}

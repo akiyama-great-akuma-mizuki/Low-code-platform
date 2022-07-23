@@ -1,0 +1,47 @@
+{
+  "id":"FLOW_IN_JOB_CHECK",
+  "type":"flow",
+  "title":"审批入职流程",
+  "params":[
+    { "name":"inJobId", "type":"String" },
+    { "name":"checkPersonId", "type":"String" },
+    { "name":"status", "type":"Integer" }
+  ],
+  "results":[
+    { "name":"inJob", "type":"com.horsecoder.yulinOA.sys.model.InJob" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_IN_JOB_UPDATE",
+      "type":"event",
+      "title":"更新入职流程状态",
+      "reference":"FLOW_CODE_IN_JOB_UPDATE",
+      "params":[
+        { "name":"totalStatus", "type":"Integer" },
+        { "name":"inJobId", "type":"String" }
+      ],
+      "results":[
+        { "name":"inJob", "type":"com.horsecoder.yulinOA.sys.model.InJob" }
+      ]
+    },
+    {
+      "id":"FLOW_CHECK",
+      "type":"flow",
+      "title":"进行通用审批流程",
+      "reference":"FLOW_CHECK",
+      "params":[
+        { "name":"checkPersonId", "type":"String" },
+        { "name":"status", "type":"Integer" }
+      ],
+      "results":[
+        { "name":"checkPerson", "type":"com.horsecoder.yulinOA.sys.model.CheckPerson" },
+        { "name":"totalStatus", "type":"Integer" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"FLOW_NODE_IN_JOB_UPDATE", "target":"end", "condition":"true" },
+    { "source":"start", "target":"FLOW_CHECK", "condition":"true" },
+    { "source":"FLOW_CHECK", "target":"FLOW_NODE_IN_JOB_UPDATE", "condition":"true" }
+  ]
+}

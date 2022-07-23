@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_CUSTOM_SCHEDULE_CREATE",
+  "type":"flow",
+  "title":"创建实体【自定义日程】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CUSTOM_SCHEDULE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_CUSTOM_SCHEDULE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.CustomSchedule" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CUSTOM_SCHEDULE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_CUSTOM_SCHEDULE_CREATE", "target":"end", "condition":"true" }
+  ]
+}

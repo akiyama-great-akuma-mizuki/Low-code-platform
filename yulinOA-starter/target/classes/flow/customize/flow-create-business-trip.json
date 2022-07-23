@@ -1,0 +1,52 @@
+{
+  "id":"FLOW_CREATE_BUSINESS_TRIP",
+  "type":"flow",
+  "title":"新建出差流程",
+  "params":[
+    { "name":"businessTripPostMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPostMapper" },
+    { "name":"partnerIds", "type":"List" }
+  ],
+  "results":[
+    { "name":"businessTrip", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_CREATE_BUSINESS_TRIP",
+      "type":"event",
+      "title":"新建出差记录",
+      "reference":"FLOW_CODE_CREATE_BUSINESS_TRIP",
+      "params":[
+        { "name":"businessTripPostMapper", "type":"com.horsecoder.yulinOA.sys.model.BusinessTripPostMapper" }
+      ],
+      "results":[
+        { "name":"businessTrip", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_CREATE_BUSINESS_TRIP_PARTENER",
+      "type":"event",
+      "title":"新建出差同行人",
+      "reference":"FLOW_CODE_CREATE_BUSINESS_TRIP_PARTENER",
+      "params":[
+        { "name":"businessTrip", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" },
+        { "name":"partnerIds", "type":"List" }
+      ]
+    },
+    {
+      "id":"FLOW_NODE_CREATE_CHECK",
+      "type":"event",
+      "title":"接入通用审批",
+      "reference":"FLOW_CODE_CREATE_CHECK",
+      "params":[
+        { "name":"businessTrip", "type":"com.horsecoder.yulinOA.sys.model.BusinessTrip" },
+        { "name":"personId", "type":"String" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_CREATE_BUSINESS_TRIP", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_BUSINESS_TRIP", "target":"FLOW_NODE_CREATE_BUSINESS_TRIP_PARTENER", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_BUSINESS_TRIP_PARTENER", "target":"FLOW_NODE_CREATE_CHECK", "condition":"true" },
+    { "source":"FLOW_NODE_CREATE_CHECK", "target":"end", "condition":"true" }
+  ]
+}

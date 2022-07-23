@@ -1,0 +1,28 @@
+{
+  "id":"FLOW_RULES_FILE_CREATE",
+  "type":"flow",
+  "title":"创建实体【制度附件管理】",
+  "params":[
+    { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesFile" }
+  ],
+  "results":[
+    { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesFile" }
+  ],
+  "nodes":[
+    {
+      "id":"FLOW_NODE_RULES_FILE_CREATE",
+      "type":"event",
+      "reference":"FLOW_CODE_RULES_FILE_CREATE",
+      "params":[
+        { "name":"postEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesFile" }
+      ],
+      "results":[
+        { "name":"resultEntity", "type":"com.horsecoder.yulinOA.sys.model.RulesFile" }
+      ]
+    }
+  ],
+  "routes":[
+    { "source":"start", "target":"FLOW_NODE_RULES_FILE_CREATE", "condition":"true" },
+    { "source":"FLOW_NODE_RULES_FILE_CREATE", "target":"end", "condition":"true" }
+  ]
+}
